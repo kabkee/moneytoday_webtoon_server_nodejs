@@ -1,2 +1,8 @@
 node_modules
-data
+
+public/data/*.jpg
+public/data/*.png
+public/data/*.gif
+public/data/**/*.jpg
+public/data/**/*.png
+public/data/**/*.gif
