@@ -21,18 +21,20 @@ function makeJson(toonTitle) {
         if (err) throw err;
         chapters = JSON.parse(data);
 
-        let toonMeta = fs.readFileSync(`${dataFolder}/${toonTitle}/meta.json`);
+        let toonMeta = fs.readFileSync(`${dataFolder}/${toonTitle}/api_meta.json`);
         toonMeta = JSON.parse(toonMeta);
 
         chapters.forEach((item, index, array) => {
             item.category = toonMeta.category;
             item.toon_title = toonMeta.title;
+            item.toon_id = toonMeta.id;
             item.writer = toonMeta.writer;
 
             delete item.more;
             item.folder_name = item.folder_name.replace(/\?/g, '').replace(/\./g, '').trim();
             let thumbFile = item.thumb.split('/');
-            item.thumb = `/${dataFolder}/${toonTitle}/${item.folder_name}/${thumbFile[thumbFile.length-1]}`;
+            item.thumb = `/data/${toonTitle}/${item.folder_name}/${thumbFile[thumbFile.length-1]}`;
+            item.id = index;
 
             let toonFiles = [];
             let errorDirs = [];
