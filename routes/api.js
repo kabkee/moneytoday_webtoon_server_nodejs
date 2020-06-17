@@ -31,7 +31,7 @@ router.get('/chapter/:toonId', function(req, res, next) {
         }
     }
     if (toonData) {
-        fs.readFile(`${dataFolder}/${toonData.title}/api_chapter_meta.json`, (err, data) => {
+        fs.readFile(`${dataFolder}/toon_${toonData.id}/api_chapter_meta.json`, (err, data) => {
             if (err) throw err;
             res.json(JSON.parse(data));
         });
